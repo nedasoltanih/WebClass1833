@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<p>Text: {{ question.question_text }}</p>
+<p>Pulish date: {{ question.pub_date|date:"D d M Y" }}</p>
+{# <p>{{ question.email }}</p> #}
+{% if question.name %}
+    <p> Name: {{ question.name }}</p>
+{% else %}
+    <p> No name registered here!</p>
+{% endif %}
+<p>{{ question.language }}</p>
+<p>
+<p>Click to vote on of {{ num_choices }} choices:</p>
+    <ul>
+    {% for ch in choice_list %}
+        <li><a href="/polls/vote/{{ ch.id }}" >{{ ch.choice_text }}</a></li>
+    {% endfor %}
+    </ul>
+</p>
+{% endblock %}

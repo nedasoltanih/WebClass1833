@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>ListView</p>
+{% if object_list|length < 1 %}
+<ul>
+    {% for question in object_list %}
+        <li><a style="color:{% cycle 'red' 'blue' %}" href="/polls/{{ question.id }}/"> {{ question.question_text|truncatewords:2 }}</a></li>
+    {% empty %}
+        <p>No questions registered yet!</p>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No questions registered yet!</p>
+{% endif %}
+</body>
+</html>
